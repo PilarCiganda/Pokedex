@@ -1,0 +1,26 @@
+.pokemain-global {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 8px;
+}
+
+.pokemain-container {
+    height: 112px;
+    display: grid;
+    grid-template-rows: 16fr 72fr 24fr;
+    border: 1px solid;
+    
+}
+
+.pokemain-id {
+    grid-row: 1;
+}
+
+.pokemain-img {
+    grid-row: 2;
+    width: 72px;
+}
+
+.pokemain-name {
+    grid-row: 3;
+}

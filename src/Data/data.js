@@ -1,7 +1,7 @@
 
 const data = [
     {
-      id: 001,
+      id: "001",
       name: 'Bulbasaur',
       img: './img/bulbasaur.png',
       type: 'Grass',
@@ -16,12 +16,12 @@ const data = [
       satk: '056',
       sdef: '056',
       spd: '045',
-      backcolor: '#74CB48',
-      backcolor2: '#A43E9E',
+      bckcolor: '#74CB48',
+      bckcolor2: '#A43E9E',
     },
 
     {
-      id: 004,
+      id: "004",
       name: 'Charmander',
       img: './img/charmander.png',
       type: 'Fire',
@@ -39,7 +39,7 @@ const data = [
       bckcolor2: '',
     },
     {
-      id: 007,
+      id: "007",
       name: 'Squirtle',
       img: './img/squirtle.png',
       type: 'Water',
@@ -58,9 +58,9 @@ const data = [
     },
 
     {
-      id: 012,
+      id: "012",
       name: 'Butterfree',
-      img: './img/butterfreee.png',
+      img: './img/butterfree.png',
       type: 'Bug',
       type2: 'Flying',
       weight: '32.0 kg',
@@ -78,7 +78,7 @@ const data = [
     },
 
     {
-      id: 025,
+      id: "025",
       name: 'Pikachu',
       img: "./img/pikachu.png",
       type: 'Electric',
@@ -97,7 +97,7 @@ const data = [
     },
 
     {
-      id: 092,
+      id: "092",
       name: 'Gastly',
       img: './img/gastly.png',
       type: 'Ghost',
@@ -117,7 +117,7 @@ const data = [
     },
 
     {
-      id: 132,
+      id: "132",
       name: 'Dotti',
       img: './img/ditto.png',
       type: 'Normal',
@@ -136,7 +136,7 @@ const data = [
     },
 
     {
-      id: 152,
+      id: "152",
       name: 'Mew',
       img: './img/mew.png',
       type: 'Psychic',
@@ -155,7 +155,7 @@ const data = [
     },
 
     {
-      id: 304,
+      id: "304",
       name: 'Aron',
       img: './img/aron.png',
       type: 'Steel',
@@ -175,3 +175,5 @@ const data = [
     },
 
 ]
+
+export default data;
