@@ -3,7 +3,7 @@ const data = [
     {
       id: "001",
       name: 'Bulbasaur',
-      img: './img/bulbasaur.png',
+      img: '../img/bulbasaur.png',
       type: 'Grass',
       type2: 'Poison',
       weight: '6.9 kg',
@@ -23,7 +23,7 @@ const data = [
     {
       id: "004",
       name: 'Charmander',
-      img: './img/charmander.png',
+      img: '../img/charmander.png',
       type: 'Fire',
       weight: '8.5 kg',
       height: '0.6 m',
@@ -41,7 +41,7 @@ const data = [
     {
       id: "007",
       name: 'Squirtle',
-      img: './img/squirtle.png',
+      img: '../img/squirtle.png',
       type: 'Water',
       weight: '9.0 kg',
       height: '0.5 m',
@@ -60,7 +60,7 @@ const data = [
     {
       id: "012",
       name: 'Butterfree',
-      img: './img/butterfree.png',
+      img: '../img/butterfree.png',
       type: 'Bug',
       type2: 'Flying',
       weight: '32.0 kg',
@@ -74,13 +74,13 @@ const data = [
       sdef: '080',
       spd: '070',
       bckcolor: '#A7B723',
-      bckcolor2: '',
+      bckcolor2: '#A891EC',
     },
 
     {
       id: "025",
       name: 'Pikachu',
-      img: "./img/pikachu.png",
+      img: "../img/pikachu.png",
       type: 'Electric',
       weight: '6.0 kg',
       height: '0.4 m',
@@ -99,7 +99,7 @@ const data = [
     {
       id: "092",
       name: 'Gastly',
-      img: './img/gastly.png',
+      img: '../img/gastly.png',
       type: 'Ghost',
       type2: 'Poison',
       weight: '0.1 kg',
@@ -113,13 +113,13 @@ const data = [
       sdef: '035',
       spd: '080',
       bckcolor: '#70559B',
-      bckcolor2: '',
+      bckcolor2: '#A43E9E',
     },
 
     {
       id: "132",
       name: 'Dotti',
-      img: './img/ditto.png',
+      img: '../img/ditto.png',
       type: 'Normal',
       weight: '4.0 kg',
       height: '0.3 m',
@@ -138,7 +138,7 @@ const data = [
     {
       id: "152",
       name: 'Mew',
-      img: './img/mew.png',
+      img: '../img/mew.png',
       type: 'Psychic',
       weight: ' 4.0 kg',
       height: '0.4 m',
@@ -157,7 +157,7 @@ const data = [
     {
       id: "304",
       name: 'Aron',
-      img: './img/aron.png',
+      img: '../img/aron.png',
       type: 'Steel',
       type2: 'Rock',
       weight: '0.60 kg',
@@ -171,7 +171,7 @@ const data = [
       sdef: '040',
       spd: '030',
       bckcolor: '#B7B9D0',
-      bckcolor2: '',
+      bckcolor2: '#DEC16B',
     },
 
 ]

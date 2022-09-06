@@ -2,18 +2,27 @@ import "../Pokecard/Pokecard.css";
 import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { LinearProgress } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 const Pokecard = ({ pokemones }) => {
+
+  const { nombre } = useParams();
+  const pokeFiltro = pokemones.filter(
+    (item) => item.name.indexOf(nombre) !== -1
+
+  );
+  const pokemon = pokeFiltro[0];
   return (
     <div>
-      {pokemones.map((pokemon) => {
-        return (
+      {/* {pokemones.map((pokemon) => {
+        return ( */}
           <div className="container" style={{ background: pokemon.bckcolor }}>
             <div className="main">
               <nav>
                 <div>
                   <button>
-                    <img src="./img/arrowicon.png" />
+                    <img src="../img/arrowicon.png" alt="1"/>
                   </button>
                   <h1>{pokemon.name}</h1>
                 </div>
@@ -30,17 +39,20 @@ const Pokecard = ({ pokemones }) => {
               </div> */}
               <div className="buttons">
                 <button>
-                  <img src="./img/arrowleft.png" />
+                  <img src="../img/arrowleft.png" />
                 </button>
                 <button>
-                  <img src="./img/arrowright.png" />
+                  <img src="../img/arrowright.png" />
                 </button>
               </div>
             </div>
             <div className="info">
               <div className="pokemontype">
                 <p style={{ background: pokemon.bckcolor }}>{pokemon.type}</p>
-                <p style={{ background: pokemon.bckcolor2 }}>{pokemon.type2}</p>
+                {pokemon.type2 ?
+                  <p style={{ background: pokemon.bckcolor2 }}>{pokemon.type2}</p> :
+                  null
+                }
               </div>
               <h2 className="pokemoninfo" style={{ color: pokemon.bckcolor }}>
                 Info
@@ -48,14 +60,14 @@ const Pokecard = ({ pokemones }) => {
               <div className="properties">
                 <div className="properties-container">
                   <div className="properties-one">
-                    <img src="./img/Weight.svg" />
+                    <img src="../img/Weight.svg" />
                     <p>{pokemon.weight}</p>
                   </div>
                   <p className="properties-p">Peso</p>
                 </div>
                 <div className="properties-container properties-container-center">
                   <div className="properties-two">
-                    <img src="./img/Height.svg" />
+                    <img src="../img/Height.svg" />
                     <p>{pokemon.height}</p>
                   </div>
                   <p className="properties-p">Altura</p>
@@ -172,8 +184,8 @@ const Pokecard = ({ pokemones }) => {
               </div>
             </div>
           </div>
-        );
-      })}
+        {/* );
+      })} */}
     </div>
   );
 };

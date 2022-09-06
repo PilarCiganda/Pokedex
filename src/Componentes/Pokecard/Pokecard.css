@@ -108,8 +108,7 @@ nav p {
   padding-top: 56px;
 }
 .pokemontype {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
   justify-content: space-around;
   margin: 2px auto;
   height: 20px;
@@ -134,7 +133,6 @@ nav p {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 45.5px;
-  background-color: ;
   margin: 12px 24px;
   justify-content: space-around;
 }
