@@ -1,10 +1,7 @@
 import "./Pokemain.css"
 import { Link } from "react-router-dom";
 
-const Pokemain = ({ pokemones, valorId }) => {
-    // const selectPokemon = ({pokemonId}) => {
-    //     valorId(pokemonId)
-    // }
+const Pokemain = ({ pokemones }) => {
     return (
         <div className="pokemain-global">
             {pokemones.map((pokemon) => {
@@ -24,7 +21,6 @@ const Pokemain = ({ pokemones, valorId }) => {
 
 export default Pokemain;
 
-// onClick={()=>selectPokemon(pokemon.id)}
 
 
 

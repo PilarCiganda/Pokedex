@@ -10,10 +10,10 @@ const Pokecard = ({ pokemones }) => {
 
   const { nombre } = useParams();
   const i = pokemones.findIndex((x => x.name === nombre) );
-  console.log(i)
   const pokemon = pokemones[i]
-  const endArrayPosition = (pokemones.lenght - 1);
+  const endArrayPosition = (pokemones.length -1);
   const firstArrayPostition = 0;
+  console.log (endArrayPosition)
   // const pokeFiltro = pokemones.filter(
   //   (item) => item.name.indexOf(nombre) !== -1
 
@@ -21,8 +21,6 @@ const Pokecard = ({ pokemones }) => {
   // const pokemon = pokeFiltro[0];
   return (
     <div>
-      {/* {pokemones.map((pokemon) => {
-        return ( */}
       <div className="container" style={{ background: pokemon.bckcolor }}>
         <div className="main">
           <nav>
@@ -38,29 +36,27 @@ const Pokecard = ({ pokemones }) => {
           <div className="pokemon">
             <img className="pokemonimg" src={pokemon.img} />
           </div>
-          {/* <div className="pokebola">
-                <img src="./img/pokebola-blanca.png" alt="" />
-              </div> */}
           <div className="buttons">
-            {(i === endArrayPosition)? 
-            <Link to={`/Pokecard/${pokemones[0].name}`}>
+            {(i === firstArrayPostition)? 
+            <Link to={`/Pokecard/${pokemones[endArrayPosition].name}`}>
             <button>
               <img src="../img/arrowleft.png" />
             </button> 
             </Link> : 
-            <Link to={`/Pokecard/${pokemones[i +1].name}`}>
+            <Link to={`/Pokecard/${pokemones[i -1].name}`}>
             <button>
               <img src="../img/arrowleft.png" />
             </button> 
-            </Link>  }
-            {(i === firstArrayPostition)? 
-            <Link to={`/Pokecard/${pokemones[endArrayPosition].name}`}>
-            <button>
+            </Link>  
+            }
+            {(i === endArrayPosition)? 
+            <Link to={`/Pokecard/${pokemones[firstArrayPostition].name}`}>
+            <button className="button-right">
               <img src="../img/arrowright.png" />
             </button>
            </Link> :
-           <Link to={`/Pokecard/${pokemones[i -1].name}`}>
-           <button>
+           <Link to={`/Pokecard/${pokemones[i +1].name}`}>
+           <button className="button-right">
              <img src="../img/arrowright.png" />
            </button>
           </Link>   
@@ -206,8 +202,6 @@ const Pokecard = ({ pokemones }) => {
           </div>
         </div>
       </div>
-      {/* );
-      })} */}
     </div>
   );
 };

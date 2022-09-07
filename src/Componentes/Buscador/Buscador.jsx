@@ -1,5 +1,4 @@
 import "./Buscador.css"
-import { useState } from "react";
 
 const Buscador = ({ pokemones, setPokeFiltro }) => {
 

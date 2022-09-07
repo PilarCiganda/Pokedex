@@ -27,13 +27,9 @@
 }
 
 .nav-button {
-    height: 28px;
+    background-color: transparent;
     margin: auto 8px;
     border: none;
-}
-
-.nav-button {
     width: 28px;
     height: 25px;
 }
-
