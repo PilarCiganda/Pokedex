@@ -1,6 +1,7 @@
 import "./Nav.css"
+import BotonAbc from "../BotonAbc/BotonAbc"
 
-const Nav = () => {
+const Nav = ({setPokeFiltro, pokemones, pokeData}) => {
     return (
         <div className="nav-container">
             <div className="nav-logo">
@@ -8,7 +9,7 @@ const Nav = () => {
                 <div className="nav-h2"><h2>Pokédex</h2></div>
             </div>
             <div>
-                <button className="nav-button"><img src="./img/Arrow.svg" alt="arrow"/></button>
+               <BotonAbc setPokeFiltro={setPokeFiltro} pokemones={pokemones} pokeData={pokeData}/>
             </div>
         </div>
     )

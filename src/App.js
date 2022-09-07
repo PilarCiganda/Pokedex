@@ -9,21 +9,15 @@ import { useState } from "react"
 import RoutsApp from "./Componentes/RoutesApp/RoutesApp"
 import RoutesApp from './Componentes/RoutesApp/RoutesApp';
 
+
 function App() {
   const [pokeFiltro, setPokeFiltro] = useState(data);
-  //  const [searchParams, setSearchParams] = useState("")
-  //  const valorId = (pokemonId) => {
-  //    setSearchParams(pokemonId)
-  //  }
 
   return (
     <div className="App">
-     <Nav />
-     <Buscador pokemones={data}setPokeFiltro={setPokeFiltro}/>
-     <Pokemain pokemones={pokeFiltro} />
-     {/* valorId={valorId}  */}
-     {/* <Pokecard  pokemones={data} /> */}
-    
+      <Nav setPokeFiltro={setPokeFiltro} pokemones={pokeFiltro} pokeData={data}/>
+      <Buscador pokemones={data} setPokeFiltro={setPokeFiltro} />
+      <Pokemain pokemones={pokeFiltro} />      
     </div>
   );
 }
