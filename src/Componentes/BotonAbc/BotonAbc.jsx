@@ -1,16 +1,36 @@
+import { useState } from "react";
+
 const BotonAbc = ({setPokeFiltro, pokemones, pokeData}) => {
+    const [order, setOrder] = useState(true)
     const pokeOrden = () => {
-        
-        let alfaArray = pokemones.sort(function (a, b) {
+        if (order === true){
+        let alfaArray = [...pokemones].sort(function (a, b) {
             if (a.name < b.name) { return -1; }
             if (a.name > b.name) { return 1; }
             return 0;
         })
+        setPokeFiltro(alfaArray);
+        setOrder(false)
+    } else if (order === false){
+        let alfaArray = [...pokemones].sort(function (a, b) {
+            if (a.id < b.id) { return -1; }
+            if (a.id > b.id) { return 1; }
+            return 0;
+        })
         setPokeFiltro(alfaArray)
-
-    }
-    return (
-        <button onClick={pokeOrden} className="nav-button"><img src="./img/Arrow.svg" alt="arrow" /></button>
+        setOrder(true)
+    }}
+    return ( 
+        <button onClick={pokeOrden} className="nav-button">{order?
+        <div>
+        <img src ='./img/unknown.png'/>
+        <img src="./img/Arrow.svg" alt="arrow"/>
+        </div>: 
+         <div>
+         <img src ='./img/numeral.png'/>
+         <img src="./img/Arrow.svg" alt="arrow"/>
+         </div>}
+        </button>
     )
 }
 

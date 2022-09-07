@@ -9,11 +9,16 @@ import { Link } from "react-router-dom";
 const Pokecard = ({ pokemones }) => {
 
   const { nombre } = useParams();
-  const pokeFiltro = pokemones.filter(
-    (item) => item.name.indexOf(nombre) !== -1
+  const i = pokemones.findIndex((x => x.name === nombre) );
+  console.log(i)
+  const pokemon = pokemones[i]
+  const endArrayPosition = (pokemones.lenght - 1);
+  const firstArrayPostition = 0;
+  // const pokeFiltro = pokemones.filter(
+  //   (item) => item.name.indexOf(nombre) !== -1
 
-  );
-  const pokemon = pokeFiltro[0];
+  // );
+  // const pokemon = pokeFiltro[0];
   return (
     <div>
       {/* {pokemones.map((pokemon) => {
@@ -37,12 +42,30 @@ const Pokecard = ({ pokemones }) => {
                 <img src="./img/pokebola-blanca.png" alt="" />
               </div> */}
           <div className="buttons">
+            {(i === endArrayPosition)? 
+            <Link to={`/Pokecard/${pokemones[0].name}`}>
             <button>
               <img src="../img/arrowleft.png" />
-            </button>
+            </button> 
+            </Link> : 
+            <Link to={`/Pokecard/${pokemones[i +1].name}`}>
+            <button>
+              <img src="../img/arrowleft.png" />
+            </button> 
+            </Link>  }
+            {(i === firstArrayPostition)? 
+            <Link to={`/Pokecard/${pokemones[endArrayPosition].name}`}>
             <button>
               <img src="../img/arrowright.png" />
             </button>
+           </Link> :
+           <Link to={`/Pokecard/${pokemones[i -1].name}`}>
+           <button>
+             <img src="../img/arrowright.png" />
+           </button>
+          </Link>   
+            }
+             
           </div>
         </div>
         <div className="info">
