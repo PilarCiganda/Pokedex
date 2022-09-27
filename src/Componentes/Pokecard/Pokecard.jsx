@@ -13,7 +13,6 @@ const Pokecard = ({ pokemones }) => {
   const pokemon = pokemones[i]
   const endArrayPosition = (pokemones.length -1);
   const firstArrayPostition = 0;
-  console.log (endArrayPosition)
   // const pokeFiltro = pokemones.filter(
   //   (item) => item.name.indexOf(nombre) !== -1
 
