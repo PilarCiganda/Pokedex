@@ -1,9 +1,7 @@
 import "../Pokecard/Pokecard.css";
 import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { LinearProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Pokecard = ({ pokemones }) => {
@@ -90,8 +88,8 @@ const Pokecard = ({ pokemones }) => {
               <p className="properties-p">Altura</p>
             </div>
             <div className="properties-three properties-container">
-              <p className="pokemon-moves">{pokemon.moves[0]}</p>
-              <p className="pokemon-moves">{pokemon.moves[1]}</p>
+              <p className="pokemon-moves">{pokemon.move1}</p>
+              <p className="pokemon-moves">{pokemon.move2}</p>
               <p className="properties-p">Movimientos</p>
             </div>
           </div>

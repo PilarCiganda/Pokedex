@@ -2,6 +2,7 @@ import "./Pokemain.css"
 import { Link } from "react-router-dom";
 
 const Pokemain = ({ pokemones }) => {
+    console.log(pokemones)
     return (
         <div className="pokemain-global">
             {pokemones.map((pokemon) => {
