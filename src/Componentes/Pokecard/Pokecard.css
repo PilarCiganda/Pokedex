@@ -79,7 +79,8 @@ nav p {
 
 .pokemon .pokemonimg {
   position: relative;
-  top: 60px;
+  top: 40px;
+  height: 150%;
 }
 
 .pokebola {
@@ -91,7 +92,6 @@ nav p {
   top: 3px;
   right: 5%;
 }
-
 
 .pokebola img {
   width: 200px;
