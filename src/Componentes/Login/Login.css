@@ -2,34 +2,41 @@ body {
     background-color: #f7f7f7;
 }
 
-.container {
+
+.logo {
+    margin-top: 80px;
+    margin-bottom: 10px;
+    text-align: center;
+
+ }
+
+ .form {
     display: grid;
-    grid-template-rows: 2fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 1fr;
     width: 80vw;
     height: 20vh;
     justify-content: center;
     gap: 5px;
     margin: auto;
-    margin-top: 80px;
-}
+    }
 
-.logo {
- display: flex;
- height: 40px;
- align-items: center;
-}
-
-.logo-h1 {
-    margin: auto;
- }
-
-.input {
+.input-user {
     height: 40px;
     border-radius: 5px;
     border: 1px solid grey;
     font-family: "Poppins", sans-serif;
     padding-left: 5px;
+    grid-row: 2;
+}
+
+.input-password {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-family: "Poppins", sans-serif;
+    padding-left: 5px;
+    grid-row: 3;
 }
 
 .button {
@@ -39,4 +46,5 @@ body {
     border: none;
     font-family: "Poppins", sans-serif;
     color: white;
+    grid-row: 4;
 }

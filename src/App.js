@@ -8,9 +8,13 @@ import { useEffect } from "react";
 function App({ pokeFiltro, setPokeFiltro, pokeFetch, setPokeFetch }) {
   
   const prueba = async () => {
+    const token = localStorage.getItem("token")
     const pokemones = await axios(
-      "http://localhost:3000/pokemones/obtener"
-    ).then((res) => res.data);
+      "http://localhost:3000/pokemones/obtener", {
+        headers: {
+          "auth-token": token,
+        }  
+      }).then((res) => res.data);
     setPokeFiltro(pokemones.data);
     setPokeFetch(pokemones.data);
   };

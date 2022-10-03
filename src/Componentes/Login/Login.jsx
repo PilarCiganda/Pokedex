@@ -1,5 +1,6 @@
 import { useState } from "react";
-import "./Login.css"
+import "./Login.css";
+
 
 const Login = () => {
     const [user, setUser] = useState("");
@@ -13,25 +14,59 @@ const Login = () => {
         setPassword(e.target.value);
     }
 
+    const setJwt = async () => {
+        try {
+            const respuesta = await fetch("http://localhost:3000/users/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify ({
+                    name: user,
+                    password: password
+                }),
+            });
+
+            if(!respuesta.ok) {
+                const error = await respuesta.json()
+                throw new Error(error.message)
+            }
+
+            const auth = await respuesta.json()
+            console.log(auth)
+
+            localStorage.setItem("token", auth.token)
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setJwt();
+    }
+
     return (
        <>
        <div className="container">
-            <div className="logo">
-                <div className="logo-h1"><h2>Pokédex</h2></div>
-            </div>
-            <input
-            type="text"
-            placeholder="User name"
-            className="input"
-            onChange={onUserInput} 
-            value={user} />
-             <input
-            type="password"
-            placeholder="Password"
-            className="input"
-            onChange={onPasswordInput}
-            value={password} />
-            <button className="button">Log in</button>
+            <div className="logo"><h2>Pokédex</h2></div>
+            <form onSubmit={handleSubmit} className="form">
+                <input
+                type="text"
+                placeholder="User name"
+                className="input-user"
+                onChange={onUserInput} 
+                value={user} />
+                <input
+                type="password"
+                placeholder="Password"
+                className="input-password"
+                onChange={onPasswordInput}
+                value={password} />
+                <button className="button">Log in</button>
+               
+            </form>
         </div>
        </> 
     )
