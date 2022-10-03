@@ -9,24 +9,20 @@ import { grey } from "@mui/material/colors";
 import { type } from "@testing-library/user-event/dist/type";
 
 const PokeInput = ({ }) => {
-    const [type1,setType1] = useState("grey");
-    const [type2,setType2] = useState("grey");
-    const [hp,setHp] = useState(50);
-    const [atk,setAtk] = useState(50);
-    const [def,setDef] = useState(50);
-    const [spatk,setSpatk] = useState(50);
-    const [spdef,setSpdef] = useState(50);
-    const [spd,setSpd] = useState(50);
-
-
     const [name,setName] = useState("");
     const [movimiento1,setMovimiento1] = useState("");
     const [movimiento2,setMovimiento2] = useState("");
     const [peso,setPeso] = useState("");
-    const [descriptioon,setDescription] = useState("");
+    const [description,setDescription] = useState("");
     const [number,setNumber] = useState("");
     const [altura,setAltura] = useState("");
 
+
+    const [imagen,setImagen] = useState("");
+    const [mostrarImagen,setMostrarImagen] = useState(false);
+
+    const onClickMostrarImagen =()=> setMostrarImagen(true);
+    const onClickVolverACargar =()=> setMostrarImagen(false); 
 
     const inputName =(e)=> setName(e.target.value);
     const inputMovimiento1 =(e)=> setMovimiento1(e.target.value);
@@ -35,7 +31,18 @@ const PokeInput = ({ }) => {
     const inputDescription =(e)=> setDescription(e.target.value);
     const inputNumber =(e)=> setNumber(e.target.value);
     const inputAltura =(e)=> setAltura(e.target.value);
+    const inputImagen =(e)=> setImagen(e.target.value);
 
+    const [type1,setType1] = useState("grey");
+    const [type2,setType2] = useState("grey");
+    const [hp,setHp] = useState(50);
+    const [atk,setAtk] = useState(50);
+    const [def,setDef] = useState(50);
+    const [spatk,setSpatk] = useState(50);
+    const [spdef,setSpdef] = useState(50);
+    const [spd,setSpd] = useState(50);
+    
+   const [datosIncompletos,setDatosIncompletos] = useState(false);
 
     const inputHp =(e)=> setHp(e.target.value);
     const inputAtk =(e)=> setAtk(e.target.value);
@@ -43,6 +50,13 @@ const PokeInput = ({ }) => {
     const inputSpatk =(e)=> setSpatk(e.target.value);
     const inputSpdef =(e)=> setSpdef(e.target.value);
     const inputSpd =(e)=> setSpd(e.target.value); 
+    const CargarPokemon =()=> {
+      if (name != "" && movimiento1 != "" && movimiento2 != " " && peso != "" && description != "" && number != "" && altura != "" && imagen != "" && type1 != "" && hp != "" && atk !="" && def != "" && spatk != "" && spdef != "" && spd != ""){ setDatosIncompletos(false)
+
+      } else { setDatosIncompletos(true)
+      }
+      
+    }
     
     const bgc = [
         { name: "rock", color: "#869E31" },
@@ -73,29 +87,34 @@ const PokeInput = ({ }) => {
         setType2(type.color);
     }
   return (
-    <div>
-      <div className="container" style={{ background: type1 }}>
+      <div className="container" style={{ background: type1 }}><div className="cargarPoke">
+      <button onClick={CargarPokemon} className="CargarPokemon" >Cargar Pokemon</button>
+       
+    
+    </div>
+    {datosIncompletos? <div className="faltanDatos">Faltan Datos</div>: null}
         <div className="main">
           <nav>
             <div>
               <Link className="linkImg" to="/">
                 <img className="flechaImg" src="../img/arrowicon.png" alt="1" />
               </Link>
-              <h1><input className="inputName"></input></h1>
+              <h1><input onChange={inputName} className="inputName"></input></h1>
             </div>
-            <p><input className="inputNumber"></input></p>
+            <p><input onChange={inputNumber} className="inputNumber"></input></p>
           </nav>
           <div className="pokebola">
             <img src="../img/pokebola-blanca.png" />
           </div>
-          <div className="pokemon">
-            <img className="pokemonimg" src="" />
-          </div>
-          <div className="pokebola">
-                <img src="./img/pokebola-blanca.png" alt="" />
-              </div>
-          
-        </div>
+          {!mostrarImagen? 
+          <div className="espacio">
+          <input className="espacio2" onChange={inputImagen}></input> 
+          <button style={{background:type1}} className="botonDeLaImg" onClick={onClickMostrarImagen}>Mostar Imagen</button>
+          </div>: 
+          <><div className="pokemon">
+            <img className="pokemonimg" src= {imagen}/>
+          </div><div className="Cualquiera"><button className="botonDeImg" onClick={onClickVolverACargar} style={{background:type1}}>Volver a cargar</button></div></>
+         }
         <div className="info">
           <div className="pokemontype">
             <p style={{ background: type1 }}><select onChange={firstType} style = {{background:type1}}>
@@ -227,24 +246,24 @@ const PokeInput = ({ }) => {
             <div className="properties-container">
               <div className="properties-one">
                 <img src="../img/Weight.svg" />
-                <p><input></input></p>
+                <p><input onChange={inputPeso}></input></p>
               </div>
               <p className="properties-p">Peso</p>
             </div>
             <div className="properties-container properties-container-center">
               <div className="properties-two">
                 <img src="../img/Height.svg" />
-                <p><input></input></p>
+                <p><input onChange={inputAltura}></input></p>
               </div>
               <p className="properties-p">Altura</p>
             </div>
             <div className="properties-three properties-container">
-              <p className="pokemon-moves"><input className="moves"></input></p>
-              <p className="pokemon-moves"><input className="moves"></input></p>
+              <p className="pokemon-moves"><input onChange={inputMovimiento1} className="moves"></input></p>
+              <p className="pokemon-moves"><input onChange={inputMovimiento2} className="moves"></input></p>
               <p className="properties-p">Movimientos</p>
             </div>
           </div>
-          <p className="pokemon-description"><input className = "inputDescription" placeholder="Escribir descripcion del pokemon.."></input></p>
+          <p className="pokemon-description"><input onChange={inputDescription} className = "inputDescription" placeholder="Escribir descripcion del pokemon.."></input></p>
           <h2 className="pokemoninfo" style={{ color: type1 }}>
             Estadísticas base
           </h2>
@@ -332,8 +351,7 @@ const PokeInput = ({ }) => {
           </div>
         </div>
       </div>
-      {/* );
-      })} */}
+      
     </div>
   );
 };

@@ -94,3 +94,55 @@ select::selection {
     height: 15px;
     font-size: 10px;
 }
+.Cualquiera {
+justify-content: center;
+display: flex;
+}
+.botonDeImg {
+    position: relative;
+    top: 46px;
+    border-radius: 30px;
+    width: 100px;
+    border: none;
+    height: 20px;
+    color: white;
+}
+.espacio {
+    height: 180px;
+    display: flex;
+    justify-content: end;
+    flex-direction: column;
+    align-items: center;
+}
+.espacio2 {
+    width: 80%;
+    height: 40px;
+}
+.botonDeLaImg {
+    position: relative;
+    top: 46px;
+    border-radius: 30px;
+    width: 100px;
+    border: none;
+    height: 20px;
+    color: white;
+}
+.cargarPoke {
+    display: flex;
+justify-content: center;
+height: 30px;
+}
+.CargarPokemon {
+    width: 80%;
+    position: relative;
+    top: 7px;
+    background-color: transparent;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+.faltanDatos{
+    text-align: center;
+    font-size: small;
+    position: relative;
+    top: 10px;
+}
