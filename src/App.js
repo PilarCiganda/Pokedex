@@ -1,23 +1,41 @@
-import { Link } from 'react-router-dom';
-import './App.css';
-import Buscador from './Componentes/Buscador/Buscador';
-import Nav from './Componentes/Nav/Nav';
-import Pokemain from './Componentes/Pokemain/Pokemain';
-import Pokecard from "./Componentes/Pokecard/Pokecard"
-import data from "./Data/data"
-import { useState } from "react"
-import RoutsApp from "./Componentes/RoutesApp/RoutesApp"
-import RoutesApp from './Componentes/RoutesApp/RoutesApp';
+import "./App.css";
+import axios from "axios";
+import Buscador from "./Componentes/Buscador/Buscador";
+import Nav from "./Componentes/Nav/Nav";
+import Pokemain from "./Componentes/Pokemain/Pokemain";
+import { useEffect } from "react";
 
+function App({ pokeFiltro, setPokeFiltro, pokeFetch, setPokeFetch }) {
+  
+  const prueba = async () => {
+    const token = localStorage.getItem("token")
+    const pokemones = await axios(
+      "http://localhost:3000/pokemones/obtener", {
+        headers: {
+          "auth-token": token,
+        }  
+      }).then((res) => res.data);
+    setPokeFiltro(pokemones.data);
+    setPokeFetch(pokemones.data);
+  };
 
-function App() {
-  const [pokeFiltro, setPokeFiltro] = useState(data);
+  useEffect(() => {
+    prueba();
+  }, []);
 
   return (
     <div className="App">
-      <Nav setPokeFiltro={setPokeFiltro} pokemones={pokeFiltro} pokeData={data}/>
-      <Buscador pokemones={data} setPokeFiltro={setPokeFiltro} />
-      <Pokemain pokemones={pokeFiltro} />      
+      <Nav
+        setPokeFiltro={setPokeFiltro}
+        pokemones={pokeFiltro}
+        pokeData={pokeFiltro}
+      />
+      <Buscador
+        pokemones={pokeFiltro}
+        setPokeFiltro={setPokeFiltro}
+        pokeFetch={pokeFetch}
+      />
+      <Pokemain pokemones={pokeFiltro} />
     </div>
   );
 }

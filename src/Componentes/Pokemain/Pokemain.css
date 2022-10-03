@@ -1,55 +1,79 @@
 .pokemain-global {
-    display: grid;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 8px;
+  margin: 16px;
+}
+@media (max-width: 1800px) {
+  .pokemain-global {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 1500px) {
+  .pokemain-global {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 1200px) {
+  .pokemain-global {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 900px) {
+  .pokemain-global {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .pokemain-global {
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 8px;
-    margin: 16px;
+  }
 }
 
 .pokemain-container {
-    height: 112px;
-    display: grid;
-    grid-template-rows: 16fr 72fr 24fr;
-    border: 1px solid;
-    border-radius: 8px;
+  height: 112px;
+  display: grid;
+  grid-template-rows: 16fr 72fr 24fr;
+  border: 1px solid;
+  border-radius: 8px;
 }
 
 .pokemain-id {
-    grid-row: 1;
-    border-radius: 8px;
-    font-size: 9px;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-    padding: 0 7px;
+  grid-row: 1;
+  border-radius: 8px;
+  font-size: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+  padding: 0 7px;
 }
 
 .pokemain-container-img {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pokemain-img {
-    grid-row: 2;
-    width: 72px;
-    border-radius: 8px;
-    
+  grid-row: 2;
+  width: 72px;
+  border-radius: 8px;
 }
 
 .pokemain-name {
-    grid-row: 3;
-    color: white;
-    border-radius: 0px 0px 6px 6px;
-    padding: 0 5px;
-    font-size: 10px;
-    font-weight: 100;
-    font-family: 'Poppins', sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
+  grid-row: 3;
+  color: white;
+  border-radius: 0px 0px 6px 6px;
+  padding: 0 5px;
+  font-size: 10px;
+  font-weight: 100;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
 }
 
 .link {
-    text-decoration: none;
+  text-decoration: none;
 }

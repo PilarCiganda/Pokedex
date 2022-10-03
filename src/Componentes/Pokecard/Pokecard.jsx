@@ -1,18 +1,14 @@
 import "../Pokecard/Pokecard.css";
 import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { LinearProgress } from "@mui/material";
 import { useParams } from "react-router-dom";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Pokecard = ({ pokemones }) => {
-
   const { nombre } = useParams();
-  const i = pokemones.findIndex((x => x.name === nombre) );
-  console.log(i)
-  const pokemon = pokemones[i]
-  const endArrayPosition = (pokemones.lenght - 1);
+  const i = pokemones.findIndex((x) => x.name === nombre);
+  const pokemon = pokemones[i];
+  const endArrayPosition = pokemones.length - 1;
   const firstArrayPostition = 0;
   // const pokeFiltro = pokemones.filter(
   //   (item) => item.name.indexOf(nombre) !== -1
@@ -21,16 +17,18 @@ const Pokecard = ({ pokemones }) => {
   // const pokemon = pokeFiltro[0];
   return (
     <div>
-      {/* {pokemones.map((pokemon) => {
-        return ( */}
       <div className="container" style={{ background: pokemon.bckcolor }}>
         <div className="main">
           <nav>
             <div>
-              <Link className="linkImg" to="/"><img className="flechaImg" src="../img/arrowicon.png" alt="1" /></Link>
+              <Link className="linkImg" to="/">
+                <img className="flechaImg" src="../img/arrowicon.png" alt="1" />
+              </Link>
               <h1>{pokemon.name}</h1>
             </div>
-            <p>#{pokemon.id}</p>
+            <p>
+              # {"0".repeat(3 - pokemon.idpokemon.length) + pokemon.idpokemon}
+            </p>
           </nav>
           <div className="pokebola">
             <img src="../img/pokebola-blanca.png" />
@@ -38,43 +36,41 @@ const Pokecard = ({ pokemones }) => {
           <div className="pokemon">
             <img className="pokemonimg" src={pokemon.img} />
           </div>
-          {/* <div className="pokebola">
-                <img src="./img/pokebola-blanca.png" alt="" />
-              </div> */}
           <div className="buttons">
-            {(i === endArrayPosition)? 
-            <Link to={`/Pokecard/${pokemones[0].name}`}>
-            <button>
-              <img src="../img/arrowleft.png" />
-            </button> 
-            </Link> : 
-            <Link to={`/Pokecard/${pokemones[i +1].name}`}>
-            <button>
-              <img src="../img/arrowleft.png" />
-            </button> 
-            </Link>  }
-            {(i === firstArrayPostition)? 
-            <Link to={`/Pokecard/${pokemones[endArrayPosition].name}`}>
-            <button>
-              <img src="../img/arrowright.png" />
-            </button>
-           </Link> :
-           <Link to={`/Pokecard/${pokemones[i -1].name}`}>
-           <button>
-             <img src="../img/arrowright.png" />
-           </button>
-          </Link>   
-            }
-             
+            {i === firstArrayPostition ? (
+              <Link to={`/Pokecard/${pokemones[endArrayPosition].name}`}>
+                <button>
+                  <img src="../img/arrowleft.png" />
+                </button>
+              </Link>
+            ) : (
+              <Link to={`/Pokecard/${pokemones[i - 1].name}`}>
+                <button>
+                  <img src="../img/arrowleft.png" />
+                </button>
+              </Link>
+            )}
+            {i === endArrayPosition ? (
+              <Link to={`/Pokecard/${pokemones[firstArrayPostition].name}`}>
+                <button className="button-right">
+                  <img src="../img/arrowright.png" />
+                </button>
+              </Link>
+            ) : (
+              <Link to={`/Pokecard/${pokemones[i + 1].name}`}>
+                <button className="button-right">
+                  <img src="../img/arrowright.png" />
+                </button>
+              </Link>
+            )}
           </div>
         </div>
         <div className="info">
           <div className="pokemontype">
             <p style={{ background: pokemon.bckcolor }}>{pokemon.type}</p>
-            {pokemon.type2 ?
-              <p style={{ background: pokemon.bckcolor2 }}>{pokemon.type2}</p> :
-              null
-            }
+            {pokemon.type2 ? (
+              <p style={{ background: pokemon.bckcolor2 }}>{pokemon.type2}</p>
+            ) : null}
           </div>
           <h2 className="pokemoninfo" style={{ color: pokemon.bckcolor }}>
             Info
@@ -95,8 +91,8 @@ const Pokecard = ({ pokemones }) => {
               <p className="properties-p">Altura</p>
             </div>
             <div className="properties-three properties-container">
-              <p className="pokemon-moves">{pokemon.moves[0]}</p>
-              <p className="pokemon-moves">{pokemon.moves[1]}</p>
+              <p className="pokemon-moves">{pokemon.move1}</p>
+              <p className="pokemon-moves">{pokemon.move2}</p>
               <p className="properties-p">Movimientos</p>
             </div>
           </div>
@@ -206,8 +202,6 @@ const Pokecard = ({ pokemones }) => {
           </div>
         </div>
       </div>
-      {/* );
-      })} */}
     </div>
   );
 };

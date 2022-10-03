@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./botonAbc.css"
 
 const BotonAbc = ({setPokeFiltro, pokemones, pokeData}) => {
     const [order, setOrder] = useState(true)
@@ -23,11 +24,11 @@ const BotonAbc = ({setPokeFiltro, pokemones, pokeData}) => {
     return ( 
         <button onClick={pokeOrden} className="nav-button">{order?
         <div>
-        <img src ='./img/unknown.png'/>
+        <img className="nav-button-az" src ='./img/unknown.png'/>
         <img src="./img/Arrow.svg" alt="arrow"/>
         </div>: 
          <div>
-         <img src ='./img/numeral.png'/>
+         <img className="nav-button-tateti" src ='./img/numeral.png'/>
          <img src="./img/Arrow.svg" alt="arrow"/>
          </div>}
         </button>

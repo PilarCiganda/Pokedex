@@ -55,5 +55,3 @@ const Pokemain = ({ pokemones, valorId }) => {
 };
 
 export default Pokemain;
-
-// onClick={()=>selectPokemon(pokemon.id)}

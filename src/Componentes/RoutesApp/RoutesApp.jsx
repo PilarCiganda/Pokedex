@@ -1,19 +1,35 @@
 import { Routes, Route } from "react-router-dom";
 import Pokecard from "../Pokecard/Pokecard";
-import data from "../../Data/data";
 import App from "../../App";
-import PokeInput from "../PokeInput/PokeInput";
+import Login from "../Login/Login"
+import { useState } from "react";
+
 const RoutesApp = () => {
-    return (
-        <>
-          <Routes>
-            <Route path="/" element={<App/>}/>
-            <Route path="/Pokecard/:nombre" element={< Pokecard pokemones={data} />}/>
-            <Route path="/Pokecard/PokeInput" element={< PokeInput/>}/>
-          </Routes>
-        </>
-    );
+  const [pokeFiltro, setPokeFiltro] = useState([]);
+  const [pokeFetch, setPokeFetch] = useState([]);
+
+  return (
+    <>
+      <Routes>
+        <Route path="/" element= {<Login/>} />
+        <Route
+          path="/main"
+          element={
+            <App
+              pokeFiltro={pokeFiltro}
+              setPokeFiltro={setPokeFiltro}
+              pokeFetch={pokeFetch}
+              setPokeFetch={setPokeFetch}
+            />
+          }
+        />
+        <Route
+          path="/Pokecard/:nombre"
+          element={<Pokecard pokemones={pokeFiltro} />}
+        />
+      </Routes>
+    </>
+  );
 };
 
 export default RoutesApp;
-
