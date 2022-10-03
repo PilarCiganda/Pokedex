@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
 import Pokecard from "../Pokecard/Pokecard";
-import data from "../../Data/data";
 import App from "../../App";
+import Login from "../Login/Login"
 import { useState } from "react";
 
 const RoutesApp = () => {
@@ -11,8 +11,9 @@ const RoutesApp = () => {
   return (
     <>
       <Routes>
+        <Route path="/" element= {<Login/>} />
         <Route
-          path="/"
+          path="/main"
           element={
             <App
               pokeFiltro={pokeFiltro}
