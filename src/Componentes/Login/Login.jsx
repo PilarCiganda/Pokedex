@@ -1,10 +1,13 @@
 import { useState } from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
     const [user, setUser] = useState("");
     const [password, setPassword] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
+    const navigate = useNavigate()
 
     const onUserInput = (e) => {
         setUser(e.target.value);
@@ -28,14 +31,17 @@ const Login = () => {
             });
 
             if(!respuesta.ok) {
-                const error = await respuesta.json()
-                throw new Error(error.message)
+                const error = await respuesta.json();
+                setErrorMessage(error.message);
+                throw new Error(error.message); 
             }
 
             const auth = await respuesta.json()
             console.log(auth)
 
-            localStorage.setItem("token", auth.token)
+            localStorage.setItem("token", auth.token);
+
+            navigate("/main");
 
         } catch (error) {
             console.error(error)
@@ -65,9 +71,9 @@ const Login = () => {
                 onChange={onPasswordInput}
                 value={password} />
                 <button className="button">Log in</button>
-               
             </form>
-        </div>
+            {errorMessage ? <div className="message"><p>{errorMessage}</p></div> : null}
+            </div>
        </> 
     )
 }
