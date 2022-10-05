@@ -60,7 +60,7 @@ const Login = () => {
             <form onSubmit={handleSubmit} className="form">
                 <input
                 type="text"
-                placeholder="User name"
+                placeholder="Username"
                 className="input-user"
                 onChange={onUserInput} 
                 value={user} />

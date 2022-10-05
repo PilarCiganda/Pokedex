@@ -1,17 +1,11 @@
 import "../PokeInput/PokeInput.css";
 import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
-import { LinearProgress } from "@mui/material";
-import { useParams } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
-import { grey } from "@mui/material/colors";
-import { type } from "@testing-library/user-event/dist/type";
 
 const PokeInput = ({}) => {
   const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [movimiento1, setMovimiento1] = useState("");
   const [movimiento2, setMovimiento2] = useState("");
@@ -121,11 +115,8 @@ const PokeInput = ({}) => {
       }
 
       const auth = await respuesta.json();
-      console.log(auth);
-
-      localStorage.setItem("token", auth.token);
-
       navigate("/main");
+      
     } catch (error) {
       console.error(error);
     }
@@ -162,6 +153,10 @@ const PokeInput = ({}) => {
     setTipo2(type.name);
   };
 
+  const volverAlMain = () => {
+    navigate("/main");
+  };
+
   return (
     <div className="container" style={{ background: type1 }}>
       <div className="cargarPoke">
@@ -175,9 +170,9 @@ const PokeInput = ({}) => {
       <div className="main">
         <nav>
           <div>
-            <Link className="linkImg" to="/">
+            <div className="linkImg" onClick={volverAlMain}>
               <img className="flechaImg" src="../img/arrowicon.png" alt="1" />
-            </Link>
+            </div>
             <h1>
               <input onChange={inputName} className="inputName"></input>
             </h1>

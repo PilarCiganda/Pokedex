@@ -28,6 +28,9 @@ body {
     font-family: "Poppins", sans-serif;
     padding-left: 5px;
     grid-row: 2;
+    width: 80vw;
+    text-align: left;
+    font-size: 12px;
 }
 
 .input-password {
@@ -37,6 +40,9 @@ body {
     font-family: "Poppins", sans-serif;
     padding-left: 5px;
     grid-row: 3;
+    width: 80vw;
+    text-align: left;
+    font-size: 12px;
 }
 
 .button {
