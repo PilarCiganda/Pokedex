@@ -74,7 +74,6 @@ const PokeInput = ({}) => {
     ) {
       cargarPokemon();
       setDatosIncompletos(false);
-      navigate("/main");
     } else {
       setDatosIncompletos(true);
     }
@@ -85,6 +84,7 @@ const PokeInput = ({}) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "auth-token": localStorage.getItem("token"),
         },
         body: JSON.stringify({
           idpokemon: number,
@@ -107,18 +107,27 @@ const PokeInput = ({}) => {
           move2: movimiento2,
         }),
       });
-
-      if (!respuesta.ok) {
-        const error = await respuesta.json();
-        // setErrorMessage(error.message);
-        throw new Error(error.message);
-      }
+      debugger;
+      // if (!respuesta.success) {
+      //   const error = await respuesta.json();
+      //   // setErrorMessage(error.message);
+      //   throw new Error(error.message);
+      // }
 
       const auth = await respuesta.json();
+
+      console.log(auth);
+
+      if (!auth.success) {
+        alert(auth.message);
+        return;
+      }
       navigate("/main");
-      
     } catch (error) {
-      console.error(error);
+      debugger;
+      console.log(error);
+
+      // throw error;
     }
   };
 
