@@ -3,13 +3,22 @@ import React from "react";
 import ProgressBar from "@ramonak/react-progress-bar";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-const Pokecard = ({ pokemones }) => {
+const Pokecard = ({ pokemones, setPokeFiltro, pokeFetch }) => {
   const { nombre } = useParams();
   const i = pokemones.findIndex((x) => x.name === nombre);
   const pokemon = pokemones[i];
   const endArrayPosition = pokemones.length - 1;
   const firstArrayPostition = 0;
+
+  const navigate = useNavigate();
+
+  const volverAlMain = () => {
+    setPokeFiltro(pokeFetch);
+    navigate("/main");
+  };
+
   // const pokeFiltro = pokemones.filter(
   //   (item) => item.name.indexOf(nombre) !== -1
 
@@ -21,9 +30,9 @@ const Pokecard = ({ pokemones }) => {
         <div className="main">
           <nav>
             <div>
-              <Link className="linkImg" to="/main">
+              <div onClick={volverAlMain} className="linkImg">
                 <img className="flechaImg" src="../img/arrowicon.png" alt="1" />
-              </Link>
+              </div>
               <h1>{pokemon.name}</h1>
             </div>
             <p>
