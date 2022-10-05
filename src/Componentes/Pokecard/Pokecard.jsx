@@ -21,7 +21,7 @@ const Pokecard = ({ pokemones }) => {
         <div className="main">
           <nav>
             <div>
-              <Link className="linkImg" to="/">
+              <Link className="linkImg" to="/main">
                 <img className="flechaImg" src="../img/arrowicon.png" alt="1" />
               </Link>
               <h1>{pokemon.name}</h1>

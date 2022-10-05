@@ -8,21 +8,15 @@ const Pokemain = ({ pokemones, valorId }) => {
   return (
     <div className="pokemain-global">
       <Link className="link" to={`/Pokecard/PokeInput`}>
-        <div
-          style={{ borderColor: "black" }}
-          className="pokemain-container"
-        >
+        <div style={{ borderColor: "black" }} className="pokemain-container">
           <p className="pokemain-id" style={{ color: "black" }}>
             ?
           </p>
           <div className="pokemain-container-img">
             <img src="../img/signo_suma.jpg" className="pokemain-img" />
           </div>
-          <p
-            className="pokemain-name"
-            style={{ backgroundColor: "black"}}
-          >
-          Agregar Pokemon
+          <p className="pokemain-name" style={{ backgroundColor: "black" }}>
+            Agregar Pokemon
           </p>
         </div>
       </Link>
@@ -35,7 +29,7 @@ const Pokemain = ({ pokemones, valorId }) => {
               className="pokemain-container"
             >
               <p className="pokemain-id" style={{ color: pokemon.bckcolor }}>
-                # {pokemon.id}
+                # {pokemon.idpokemon}
               </p>
               <div className="pokemain-container-img">
                 <img src={pokemon.img} className="pokemain-img" />

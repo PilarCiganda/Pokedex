@@ -80,6 +80,7 @@ const PokeInput = ({}) => {
     ) {
       cargarPokemon();
       setDatosIncompletos(false);
+      navigate("/main");
     } else {
       setDatosIncompletos(true);
     }
