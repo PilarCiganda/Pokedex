@@ -1,13 +1,31 @@
 import { Routes, Route } from "react-router-dom";
+import axios from "axios";
 import Pokecard from "../Pokecard/Pokecard";
 import App from "../../App";
 import Login from "../Login/Login";
-import { useState } from "react";
+import Error from "../Error/Error"
+import { useState, useEffect } from "react";
 import PokeInput from "../PokeInput/PokeInput";
 
 const RoutesApp = () => {
   const [pokeFiltro, setPokeFiltro] = useState([]);
   const [pokeFetch, setPokeFetch] = useState([]);
+  
+  const token = localStorage.getItem("token")
+  const getpokemones = async () => {
+    const allpokemones = await axios(
+      "http://localhost:3000/pokemones/obtener", {
+        headers: {
+          "auth-token": token,
+        }  
+      }).then((res) => res.data);
+    setPokeFiltro(allpokemones.data);
+    setPokeFetch(allpokemones.data);
+  }; 
+
+  useEffect(() => {
+  getpokemones();
+  }, []);
 
   return (
     <>
@@ -35,7 +53,9 @@ const RoutesApp = () => {
             />
           }
         />
+        <Route path="*" element={<Error />}/>
       </Routes>
+      
     </>
   );
 };
