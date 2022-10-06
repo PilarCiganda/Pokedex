@@ -3,8 +3,13 @@ import Buscador from "./Componentes/Buscador/Buscador";
 import Nav from "./Componentes/Nav/Nav";
 import Pokemain from "./Componentes/Pokemain/Pokemain";
 
-function App({ pokeFiltro, setPokeFiltro, pokeFetch, setPokeFetch }) {
-  
+function App({
+  pokeFiltro,
+  setPokeFiltro,
+  pokeFetch,
+  setPokeFetch,
+  pokebolaAppears,
+}) {
   return (
     <div className="App">
       <Nav
@@ -17,7 +22,7 @@ function App({ pokeFiltro, setPokeFiltro, pokeFetch, setPokeFetch }) {
         setPokeFiltro={setPokeFiltro}
         pokeFetch={pokeFetch}
       />
-      <Pokemain pokemones={pokeFiltro} />
+      <Pokemain pokemones={pokeFiltro} pokebolaAppears={pokebolaAppears} />
     </div>
   );
 }

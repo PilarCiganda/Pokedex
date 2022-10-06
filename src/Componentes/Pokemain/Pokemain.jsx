@@ -1,12 +1,16 @@
 import "./Pokemain.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-const Pokemain = ({ pokemones, valorId }) => {
-  // const selectPokemon = ({pokemonId}) => {
-  //     valorId(pokemonId)
-  // }
+const Pokemain = ({ pokemones, valorId, pokebolaAppears }) => {
   return (
     <div className="pokemain-global">
+      {pokebolaAppears ? (
+        <div class="wrapper">
+          <div class="pokeball"></div>
+        </div>
+      ) : null}
+
       <Link className="link" to={`/Pokecard/PokeInput`}>
         <div style={{ borderColor: "black" }} className="pokemain-container">
           <p className="pokemain-id" style={{ color: "black" }}>

@@ -4,14 +4,14 @@ import ProgressBar from "@ramonak/react-progress-bar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const PokeInput = ({}) => {
+const PokeInput = ({ numberOfPokemon }) => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [movimiento1, setMovimiento1] = useState("");
   const [movimiento2, setMovimiento2] = useState("");
   const [peso, setPeso] = useState("");
   const [description, setDescription] = useState("");
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState(numberOfPokemon + 1);
   const [altura, setAltura] = useState("");
 
   const [imagen, setImagen] = useState("");
@@ -25,9 +25,13 @@ const PokeInput = ({}) => {
   const inputMovimiento2 = (e) => setMovimiento2(e.target.value);
   const inputPeso = (e) => setPeso(e.target.value);
   const inputDescription = (e) => setDescription(e.target.value);
-  const inputNumber = (e) => setNumber(e.target.value);
+  // const inputNumber = (e) => setNumber(e.target.value);
   const inputAltura = (e) => setAltura(e.target.value);
   const inputImagen = (e) => setImagen(e.target.value);
+
+  //Estado para que la pokebola aparezca y desaparezca
+
+  const [pokebolaAppears, setPokebolaAppears] = useState(false);
 
   //type1 y type2 corresponden a los valores de bckcolor1 y bckcolor2 respectivamente
 
@@ -39,14 +43,17 @@ const PokeInput = ({}) => {
   const [tipo1, setTipo1] = useState("");
   const [tipo2, setTipo2] = useState("");
 
-  const [hp, setHp] = useState(50);
-  const [atk, setAtk] = useState(50);
-  const [def, setDef] = useState(50);
-  const [spatk, setSpatk] = useState(50);
-  const [spdef, setSpdef] = useState(50);
-  const [spd, setSpd] = useState(50);
+  const [hp, setHp] = useState();
+  const [atk, setAtk] = useState();
+  const [def, setDef] = useState();
+  const [spatk, setSpatk] = useState();
+  const [spdef, setSpdef] = useState();
+  const [spd, setSpd] = useState();
+
+  //Estados que sirven para insertar el error que viene del back en el front
 
   const [datosIncompletos, setDatosIncompletos] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const inputHp = (e) => setHp(e.target.value);
   const inputAtk = (e) => setAtk(e.target.value);
@@ -54,30 +61,31 @@ const PokeInput = ({}) => {
   const inputSpatk = (e) => setSpatk(e.target.value);
   const inputSpdef = (e) => setSpdef(e.target.value);
   const inputSpd = (e) => setSpd(e.target.value);
-  const verificarContenidoDeInput = () => {
-    if (
-      name != "" &&
-      movimiento1 != "" &&
-      movimiento2 != " " &&
-      peso != "" &&
-      description != "" &&
-      number != "" &&
-      altura != "" &&
-      imagen != "" &&
-      type1 != "" &&
-      hp != "" &&
-      atk != "" &&
-      def != "" &&
-      spatk != "" &&
-      spdef != "" &&
-      spd != ""
-    ) {
-      cargarPokemon();
-      setDatosIncompletos(false);
-    } else {
-      setDatosIncompletos(true);
-    }
-  };
+
+  // const verificarContenidoDeInput = () => {
+  //   if (
+  //     name != "" &&
+  //     movimiento1 != "" &&
+  //     movimiento2 != " " &&
+  //     peso != "" &&
+  //     description != "" &&
+  //     number != "" &&
+  //     altura != "" &&
+  //     imagen != "" &&
+  //     type1 != "" &&
+  //     hp != "" &&
+  //     atk != "" &&
+  //     def != "" &&
+  //     spatk != "" &&
+  //     spdef != "" &&
+  //     spd != ""
+  //   ) {
+  //     cargarPokemon();
+  //     setDatosIncompletos(false);
+  //   } else {
+  //     setDatosIncompletos(true);
+  //   }
+  // };
   const cargarPokemon = async () => {
     try {
       const respuesta = await fetch("http://localhost:3000/pokemones/agregar", {
@@ -107,27 +115,26 @@ const PokeInput = ({}) => {
           move2: movimiento2,
         }),
       });
-      debugger;
-      // if (!respuesta.success) {
-      //   const error = await respuesta.json();
-      //   // setErrorMessage(error.message);
-      //   throw new Error(error.message);
-      // }
 
       const auth = await respuesta.json();
 
       console.log(auth);
+      setPokebolaAppears(true);
+
+      setTimeout(() => {
+        setPokebolaAppears(false);
+        console.log("Esto se esta ejecutando");
+      }, 1500);
 
       if (!auth.success) {
-        alert(auth.message);
+        setErrorMessage(auth.message);
         return;
       }
-      navigate("/main");
-    } catch (error) {
-      debugger;
-      console.log(error);
 
-      // throw error;
+      navigate("/main");
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -168,14 +175,18 @@ const PokeInput = ({}) => {
 
   return (
     <div className="container" style={{ background: type1 }}>
+      {pokebolaAppears ? (
+        <div class="wrapper">
+          <div class="pokeball"></div>
+        </div>
+      ) : null}
+
       <div className="cargarPoke">
-        <button onClick={verificarContenidoDeInput} className="CargarPokemon">
+        <button onClick={cargarPokemon} className="CargarPokemon">
           Cargar Pokemon
         </button>
       </div>
-      {datosIncompletos ? (
-        <div className="faltanDatos">Faltan Datos</div>
-      ) : null}
+      {errorMessage ? <div className="faltanDatos">{errorMessage}</div> : null}
       <div className="main">
         <nav>
           <div>
@@ -187,7 +198,7 @@ const PokeInput = ({}) => {
             </h1>
           </div>
           <p>
-            <input onChange={inputNumber} className="inputNumber"></input>
+            <div className="inputNumber">#{number}</div>
           </p>
         </nav>
         <div className="pokebola">
