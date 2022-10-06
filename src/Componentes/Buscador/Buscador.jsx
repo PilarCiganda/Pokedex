@@ -17,7 +17,7 @@ const Buscador = ({ pokemones, setPokeFiltro, pokeFetch = { pokeFetch } }) => {
     <div className="buscador-container">
       <input
         type="text"
-        placeholder="Buscar"
+        placeholder="Search"
         className="buscador-input"
         onChange={handleInputChange}
       />

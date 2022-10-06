@@ -25,7 +25,6 @@ const PokeInput = ({ numberOfPokemon }) => {
   const inputMovimiento2 = (e) => setMovimiento2(e.target.value);
   const inputPeso = (e) => setPeso(e.target.value);
   const inputDescription = (e) => setDescription(e.target.value);
-  // const inputNumber = (e) => setNumber(e.target.value);
   const inputAltura = (e) => setAltura(e.target.value);
   const inputImagen = (e) => setImagen(e.target.value);
 
@@ -50,9 +49,8 @@ const PokeInput = ({ numberOfPokemon }) => {
   const [spdef, setSpdef] = useState();
   const [spd, setSpd] = useState();
 
-  //Estados que sirven para insertar el error que viene del back en el front
+  //Estado que sirven para insertar el error que viene del back en el front
 
-  const [datosIncompletos, setDatosIncompletos] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
   const inputHp = (e) => setHp(e.target.value);
@@ -62,30 +60,6 @@ const PokeInput = ({ numberOfPokemon }) => {
   const inputSpdef = (e) => setSpdef(e.target.value);
   const inputSpd = (e) => setSpd(e.target.value);
 
-  // const verificarContenidoDeInput = () => {
-  //   if (
-  //     name != "" &&
-  //     movimiento1 != "" &&
-  //     movimiento2 != " " &&
-  //     peso != "" &&
-  //     description != "" &&
-  //     number != "" &&
-  //     altura != "" &&
-  //     imagen != "" &&
-  //     type1 != "" &&
-  //     hp != "" &&
-  //     atk != "" &&
-  //     def != "" &&
-  //     spatk != "" &&
-  //     spdef != "" &&
-  //     spd != ""
-  //   ) {
-  //     cargarPokemon();
-  //     setDatosIncompletos(false);
-  //   } else {
-  //     setDatosIncompletos(true);
-  //   }
-  // };
   const cargarPokemon = async () => {
     try {
       const respuesta = await fetch("http://localhost:3000/pokemones/agregar", {
@@ -123,7 +97,6 @@ const PokeInput = ({ numberOfPokemon }) => {
 
       setTimeout(() => {
         setPokebolaAppears(false);
-        console.log("Esto se esta ejecutando");
       }, 1500);
 
       if (!auth.success) {
@@ -183,7 +156,7 @@ const PokeInput = ({ numberOfPokemon }) => {
 
       <div className="cargarPoke">
         <button onClick={cargarPokemon} className="CargarPokemon">
-          Cargar Pokemon
+          Upload pokemon
         </button>
       </div>
       {errorMessage ? <div className="faltanDatos">{errorMessage}</div> : null}
@@ -194,7 +167,7 @@ const PokeInput = ({ numberOfPokemon }) => {
               <img className="flechaImg" src="../img/arrowicon.png" alt="1" />
             </div>
             <h1>
-              <input onChange={inputName} className="inputName"></input>
+              <input onChange={inputName} className="inputName" placeholder="name" ></input>
             </h1>
           </div>
           <p>
@@ -206,13 +179,13 @@ const PokeInput = ({ numberOfPokemon }) => {
         </div>
         {!mostrarImagen ? (
           <div className="espacio">
-            <input className="espacio2" onChange={inputImagen}></input>
+            <input className="espacio2" onChange={inputImagen} placeholder="img url" ></input>
             <button
               style={{ background: type1 }}
               className="botonDeLaImg"
               onClick={onClickMostrarImagen}
             >
-              Mostar Imagen
+              Show image
             </button>
           </div>
         ) : (
@@ -226,7 +199,7 @@ const PokeInput = ({ numberOfPokemon }) => {
                 onClick={onClickVolverACargar}
                 style={{ background: type1 }}
               >
-                Volver a cargar
+                Update image
               </button>
             </div>
           </>
@@ -282,7 +255,7 @@ const PokeInput = ({ numberOfPokemon }) => {
             </p>
           </div>
           <h2 className="pokemoninfo" style={{ color: type1 }}>
-            Info
+            About
           </h2>
           <div className="properties">
             <div className="properties-container">
@@ -292,7 +265,7 @@ const PokeInput = ({ numberOfPokemon }) => {
                   <input onChange={inputPeso}></input>
                 </p>
               </div>
-              <p className="properties-p">Peso</p>
+              <p className="properties-p">Weight</p>
             </div>
             <div className="properties-container properties-container-center">
               <div className="properties-two">
@@ -301,7 +274,7 @@ const PokeInput = ({ numberOfPokemon }) => {
                   <input onChange={inputAltura}></input>
                 </p>
               </div>
-              <p className="properties-p">Altura</p>
+              <p className="properties-p">Height</p>
             </div>
             <div className="properties-three properties-container">
               <p className="pokemon-moves">
@@ -310,18 +283,18 @@ const PokeInput = ({ numberOfPokemon }) => {
               <p className="pokemon-moves">
                 <input onChange={inputMovimiento2} className="moves"></input>
               </p>
-              <p className="properties-p">Movimientos</p>
+              <p className="properties-p">Moves</p>
             </div>
           </div>
           <p className="pokemon-description">
             <input
               onChange={inputDescription}
               className="inputDescription"
-              placeholder="Escribir descripcion del pokemon.."
+              placeholder="description"
             ></input>
           </p>
           <h2 className="pokemoninfo" style={{ color: type1 }}>
-            Estadísticas base
+            Base Stats
           </h2>
           <div className="progress">
             <div className="progress-item">

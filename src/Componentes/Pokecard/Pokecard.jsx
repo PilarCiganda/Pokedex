@@ -19,11 +19,6 @@ const Pokecard = ({ pokemones, setPokeFiltro, pokeFetch }) => {
     navigate("/main");
   };
 
-  // const pokeFiltro = pokemones.filter(
-  //   (item) => item.name.indexOf(nombre) !== -1
-
-  // );
-  // const pokemon = pokeFiltro[0];
   return (
     <div>
       <div className="container" style={{ background: pokemon.bckcolor }}>
